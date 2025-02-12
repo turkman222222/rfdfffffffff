@@ -1,0 +1,21 @@
+﻿<Page x:Class="WpfApp2.Pages.autoriz"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfApp2.Pages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="autoriz">
+
+    <Grid>
+        <TextBox x:Name="txtLogin" HorizontalAlignment="Center" Margin="0,104,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="txtLogin_TextChanged"/>
+        <TextBlock x:Name="txtLogins" HorizontalAlignment="Left" Margin="340,83,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="passBoxpassword" HorizontalAlignment="Center" Margin="0,148,0,0" VerticalAlignment="Top" Width="120"/>
+        <TextBlock x:Name="txtPassword" HorizontalAlignment="Left" Margin="340,127,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" RenderTransformOrigin="-0.297,0.114"/>
+        <Button x:Name="btnAutoriz" Content="Авторизироваться" HorizontalAlignment="Center" Margin="0,178,0,0" VerticalAlignment="Top" Width="132" Click="btnAutoriz_Click"/>
+        <Button x:Name="btnReg" Content="Зарегестрироваться" HorizontalAlignment="Center" Margin="0,210,0,0" VerticalAlignment="Top" Width="132" Click="btnReg_Click"/>
+        <TextBlock x:Name="txtAutoriz226" HorizontalAlignment="Left" Margin="357,34,0,0" TextWrapping="Wrap" Text="Авторизуйтесь" VerticalAlignment="Top"/>
+
+    </Grid>
+</Page>

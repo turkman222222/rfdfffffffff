@@ -1,0 +1,14 @@
+﻿<Window x:Name="rcept" x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="Авторизация" Height="450" Width="800" Background="#FF26B300">
+    <Grid Margin="0,105,0,0">
+        <Frame x:Name="frmMane" Content="Frame" Navigated="frmMane_Navigated" NavigationUIVisibility="Hidden"/>
+        <Image Margin="348,-88,381,345" Source="/7287704_mars_planet_space_x_icon.ico" Stretch="Fill"/>
+
+    </Grid>
+</Window>
