@@ -39,7 +39,8 @@ namespace WpfApp2.Pages
 
         private void TextSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-
+            ///bbvcbcvbcvbcvbcvbcvb
         }
+
     }
 }
