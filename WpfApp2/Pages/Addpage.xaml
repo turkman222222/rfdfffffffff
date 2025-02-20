@@ -10,7 +10,6 @@
 
     <Grid>
         <Button x:Name="btnSave" Content="Сохранить" HorizontalAlignment="Left" Margin="360,362,0,0" VerticalAlignment="Top"/>
-        <ComboBox x:Name="combocat" HorizontalAlignment="Left" Margin="289,303,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="combocat_SelectionChanged"/>
         <TextBox HorizontalAlignment="Left" Margin="372,188,0,0" TextWrapping="Wrap" Text="{Binding Recipesname}" VerticalAlignment="Top" Width="120"/>
         <TextBlock HorizontalAlignment="Left" Margin="312,90,0,0" TextWrapping="Wrap" Text="Рецепт" VerticalAlignment="Top" />
 

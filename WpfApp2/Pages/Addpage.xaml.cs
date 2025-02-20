@@ -24,5 +24,10 @@ namespace WpfApp2.Pages
         {
             InitializeComponent();
         }
+
+        //private void combocat_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        //{
+
+        //}
     }
 }

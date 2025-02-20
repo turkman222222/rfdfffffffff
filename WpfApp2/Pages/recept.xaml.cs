@@ -88,6 +88,10 @@ namespace WpfApp2.Pages
             return time.ToArray();
         }
 
+        private void Prod_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
     
 }
