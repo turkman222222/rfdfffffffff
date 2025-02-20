@@ -21,7 +21,7 @@
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
             <ComboBox x:Name="vidRecept" HorizontalAlignment="Center" SelectionChanged="ComboFilter_SelectionChanged" Margin="5" VerticalAlignment="Center" Width="209"/>
             <ComboBox x:Name="filtr" HorizontalAlignment="Center" Margin="5" SelectionChanged="ComboFilterSelectionChanged" VerticalAlignment="Center" Width="190"/>
-            <TextBox x:Name="txttxt" HorizontalAlignment="Center" Margin="5" TextWrapping="Wrap" TextChanged="TextSearch_TextChanged" Text="TextBox" VerticalAlignment="Center" Width="186"/>
+            <TextBox x:Name="txttxt" HorizontalAlignment="Center" Margin="5" TextWrapping="Wrap" TextChanged="TextSearch_TextChanged"  VerticalAlignment="Center" Width="186"/>
         </StackPanel>
         <ListView x:Name="Prod" Grid.Row="1" >
             <ListView.ItemTemplate>
@@ -46,7 +46,20 @@
     <Run Text="{Binding Discription}"/>
 
                             </TextBlock>
+                            
+                            <TextBlock Width="auto" TextWrapping="Wrap" Height="auto">
+                                <Run Text="Автор" />
+<Run Text="{Binding Authors.Authorname}"/>
+                            </TextBlock>
 
+
+
+                        </StackPanel>
+                        
+                            <StackPanel   Grid.Column="2" Width="auto" Orientation="Vertical" HorizontalAlignment="Left">
+                            <TextBlock Grid.Column="1" Width="auto" TextWrapping ="Wrap" Height="auto" Text="{Binding CookingTime}"/>
+                            
+      
                         </StackPanel>
 
 

@@ -21,26 +21,73 @@ namespace WpfApp2.Pages
     /// </summary>
     public partial class recept : Page
     {
+       
+
+        
+
         public recept()
         {
             InitializeComponent();
             Prod.ItemsSource = AppDate.AppConnect.model1.Recipes.ToList();
+            filtr.Items.Add("Время");
+            filtr.Items.Add("по возрастанию");
+            filtr.Items.Add("по убыванию");
+            filtr.SelectedIndex = 0;
+
+            vidRecept.SelectedIndex = 0;
+            var category = AppConnect.model1.Categories;
+            vidRecept.Items.Add("Категория");
+            foreach( var item in category )
+            {
+                vidRecept.Items.Add(item.CategoryName);
+            }
+                
         }
 
         private void ComboFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Prod.ItemsSource = Findtime();
         }
 
         private void ComboFilterSelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
+            Prod.ItemsSource = Findtime();
         }
 
         private void TextSearch_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ///bbvcbcvbcvbcvbcvbcvb
+            Prod.ItemsSource = Findtime();
+        }
+        Recipes[] Findtime()
+        {
+            var time = AppConnect.model1.Recipes.ToList();
+            var timeall = time;
+            if (txttxt != null)
+            {
+                time = time.Where(x => x.RecipeName.ToLower().Contains(txttxt.Text.ToLower())).ToList();
+            }
+            if (vidRecept.SelectedIndex > 0)
+            {
+                
+                        time = time.Where(x => x.CategoryID==vidRecept.SelectedIndex).ToList();
+                        
+                
+            }
+            if (filtr.SelectedIndex > 0)
+            {
+                switch (filtr.SelectedIndex)
+                {
+                    case 1:
+                        time = time.OrderBy(x => x.CookingTime).ToList(); break;
+                    case 2:
+                        time = time.OrderByDescending(x => x.CookingTime).ToList();
+                        break;
+                }
+
+            }
+            return time.ToArray();
         }
 
     }
+    
 }
