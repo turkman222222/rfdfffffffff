@@ -24,7 +24,7 @@ namespace WpfApp2
         public MainWindow()
         {
             InitializeComponent();
-            AppDate.AppConnect.model1 = new Entities();
+            AppDate.AppConnect.model1 = new Entities1();
             AppDate.AppFrame.frmMane2 = frmMane;
             frmMane.Navigate(new Pages.autoriz());
             

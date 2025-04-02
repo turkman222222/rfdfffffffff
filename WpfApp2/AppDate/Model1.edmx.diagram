@@ -4,24 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="c74db04dca694ac7a0892626dad92650" Name="Diagram1" ZoomLevel="74">
-        <EntityTypeShape EntityType="Model.Authors" Width="1.5" PointX="12.375" PointY="8.5" />
-        <EntityTypeShape EntityType="Model.Categories" Width="1.5" PointX="12.375" PointY="5.75" />
-        <EntityTypeShape EntityType="Model.CokingSteps" Width="1.5" PointX="16.875" PointY="7.125" />
-        <EntityTypeShape EntityType="Model.Ingredients" Width="1.5" PointX="17.625" PointY="4.75" />
-        <EntityTypeShape EntityType="Model.RecipeIngredients" Width="1.5" PointX="19.875" PointY="8.5" />
-        <EntityTypeShape EntityType="Model.Recipes" Width="1.5" PointX="14.625" PointY="7.75" />
-        <EntityTypeShape EntityType="Model.RecipeTags" Width="1.5" PointX="16.875" PointY="10.5" />
-        <EntityTypeShape EntityType="Model.Reviews" Width="1.5" PointX="16.875" PointY="15.5" />
-        <EntityTypeShape EntityType="Model.TEgs" Width="1.5" PointX="14.625" PointY="12.75" />
-        <AssociationConnector Association="Model.FK_Recipes_Authors" />
-        <AssociationConnector Association="Model.FK_Recipes_Categories" />
-        <AssociationConnector Association="Model.FK_CokingSteps_Recipes" />
-        <AssociationConnector Association="Model.FK_RecipeIngredients_Ingredients" />
-        <AssociationConnector Association="Model.FK_RecipeIngredients_Recipes" />
-        <AssociationConnector Association="Model.FK_RecipeTags_Recipes" />
-        <AssociationConnector Association="Model.FK_Reviews_Recipes" />
-        <AssociationConnector Association="Model.FK_RecipeTags_TEgs" />
+      <Diagram DiagramId="ca4feeeca13c4d4badcbc9d5554079d8" Name="Diagram1">
+        <EntityTypeShape EntityType="Model.Authors" Width="1.5" PointX="0.75" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Categories" Width="1.5" PointX="0.75" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.CokingSteps" Width="1.5" PointX="5.25" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Ingredients" Width="1.5" PointX="3" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.RecipeIngredients" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Recipes" Width="1.5" PointX="3" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.RecipeTags" Width="1.5" PointX="8.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.Reviews" Width="1.5" PointX="5.25" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.sysdiagrams" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Model.TEgs" Width="1.5" PointX="6" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="Model.FK_Recipes_Authors" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Recipes_Categories" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_CokingSteps_Recipes" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_RecipeIngredients_Ingredients" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_RecipeIngredients_Recipes" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_RecipeTags_Recipes" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_Reviews_Recipes" ManuallyRouted="false" />
+        <AssociationConnector Association="Model.FK_RecipeTags_TEgs" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

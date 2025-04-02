@@ -21,7 +21,7 @@
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
             <ComboBox x:Name="vidRecept" HorizontalAlignment="Center" SelectionChanged="ComboFilter_SelectionChanged" Margin="5" VerticalAlignment="Center" Width="209"/>
             <ComboBox x:Name="filtr" HorizontalAlignment="Center" Margin="5" SelectionChanged="ComboFilterSelectionChanged" VerticalAlignment="Center" Width="190"/>
-            <TextBox x:Name="txttxt" HorizontalAlignment="Center" Margin="5" TextWrapping="Wrap" TextChanged="TextSearch_TextChanged" Text="TextBox" VerticalAlignment="Center" Width="186"/>
+            <TextBox x:Name="txttxt" HorizontalAlignment="Center" Margin="5" TextWrapping="Wrap" TextChanged="TextSearch_TextChanged"  VerticalAlignment="Center" Width="186"/>
         </StackPanel>
         <ListView x:Name="Prod" Grid.Row="1" >
             <ListView.ItemTemplate>
@@ -31,7 +31,7 @@
                             <ColumnDefinition Width="100"/>
                             <ColumnDefinition Width="400"/>
                             <ColumnDefinition Width="200"/>
-                            
+
                         </Grid.ColumnDefinitions>
                         <Image Source="{Binding CurrentPhoto}" Grid.Column="0"/>
                         <StackPanel   Grid.Column="1" Width="auto" Orientation="Vertical" HorizontalAlignment="Left">
@@ -47,17 +47,34 @@
 
                             </TextBlock>
 
+                            <TextBlock Width="auto" TextWrapping="Wrap" Height="auto">
+                                <Run Text="Автор" />
+<Run Text="{Binding Authors.Authorname}"/>
+                            </TextBlock>
+
+
+
+                        </StackPanel>
+
+                        <StackPanel   Grid.Column="2" Width="auto" Orientation="Vertical" HorizontalAlignment="Left">
+                            <TextBlock Grid.Column="1" Width="auto" TextWrapping ="Wrap" Height="auto" Text="{Binding CookingTime}"/>
+
+
                         </StackPanel>
 
 
-                    </Grid>                                                                 
+                    </Grid>
                 </DataTemplate>
-                
-          
-                
+
+
+
             </ListView.ItemTemplate>
         </ListView>
-
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <Button Content="добавить" Height="28" Width="128" Click="Button_Click_1"/>
+            <Button Content="Удалить" Margin="15,15,15,15" Height="28" Width="128" Click="Button_Click_2"/>
+        <Button Content="Редактировать" Click="Button_Click" Height="28" Width="128"/>
+        </StackPanel>
 
 
     </Grid>

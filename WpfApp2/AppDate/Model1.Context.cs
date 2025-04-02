@@ -13,10 +13,10 @@ namespace WpfApp2.AppDate
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class Entities1 : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public Entities1()
+            : base("name=Entities1")
         {
         }
     
@@ -33,6 +33,7 @@ namespace WpfApp2.AppDate
         public virtual DbSet<Recipes> Recipes { get; set; }
         public virtual DbSet<RecipeTags> RecipeTags { get; set; }
         public virtual DbSet<Reviews> Reviews { get; set; }
+        public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TEgs> TEgs { get; set; }
     }
 }

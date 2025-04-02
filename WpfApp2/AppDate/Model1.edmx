@@ -50,12 +50,12 @@
           <Key>
             <PropertyRef Name="RecipeID" />
           </Key>
-          <Property Name="RecipeID" Type="int" Nullable="false" />
-          <Property Name="RecipeName" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Discription" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="RecipeID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RecipeName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Discription" Type="nvarchar" MaxLength="50" />
           <Property Name="CategoryID" Type="int" Nullable="false" />
           <Property Name="AuthorID" Type="int" Nullable="false" />
-          <Property Name="CookingTime" Type="time" Precision="7" Nullable="false" />
+          <Property Name="CookingTime" Type="int" />
           <Property Name="image" Type="nchar" MaxLength="10" />
         </EntityType>
         <EntityType Name="RecipeTags">
@@ -74,6 +74,16 @@
           <Property Name="RecipeID" Type="int" Nullable="false" />
           <Property Name="ReviewText" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Rating" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
         </EntityType>
         <EntityType Name="TEgs">
           <Key>
@@ -187,6 +197,7 @@
           <EntitySet Name="Recipes" EntityType="Self.Recipes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="RecipeTags" EntityType="Self.RecipeTags" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reviews" EntityType="Self.Reviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TEgs" EntityType="Self.TEgs" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CokingSteps_Recipes" Association="Self.FK_CokingSteps_Recipes">
             <End Role="Recipes" EntitySet="Recipes" />
@@ -225,66 +236,23 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="Authors" EntityType="Model.Authors" />
-          <EntitySet Name="Categories" EntityType="Model.Categories" />
-          <EntitySet Name="CokingSteps" EntityType="Model.CokingSteps" />
-          <EntitySet Name="Ingredients" EntityType="Model.Ingredients" />
-          <EntitySet Name="RecipeIngredients" EntityType="Model.RecipeIngredients" />
-          <EntitySet Name="Recipes" EntityType="Model.Recipes" />
-          <EntitySet Name="RecipeTags" EntityType="Model.RecipeTags" />
-          <EntitySet Name="Reviews" EntityType="Model.Reviews" />
-          <EntitySet Name="TEgs" EntityType="Model.TEgs" />
-          <AssociationSet Name="FK_Recipes_Authors" Association="Model.FK_Recipes_Authors">
-            <End Role="Authors" EntitySet="Authors" />
-            <End Role="Recipes" EntitySet="Recipes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Recipes_Categories" Association="Model.FK_Recipes_Categories">
-            <End Role="Categories" EntitySet="Categories" />
-            <End Role="Recipes" EntitySet="Recipes" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CokingSteps_Recipes" Association="Model.FK_CokingSteps_Recipes">
-            <End Role="Recipes" EntitySet="Recipes" />
-            <End Role="CokingSteps" EntitySet="CokingSteps" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RecipeIngredients_Ingredients" Association="Model.FK_RecipeIngredients_Ingredients">
-            <End Role="Ingredients" EntitySet="Ingredients" />
-            <End Role="RecipeIngredients" EntitySet="RecipeIngredients" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RecipeIngredients_Recipes" Association="Model.FK_RecipeIngredients_Recipes">
-            <End Role="Recipes" EntitySet="Recipes" />
-            <End Role="RecipeIngredients" EntitySet="RecipeIngredients" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RecipeTags_Recipes" Association="Model.FK_RecipeTags_Recipes">
-            <End Role="Recipes" EntitySet="Recipes" />
-            <End Role="RecipeTags" EntitySet="RecipeTags" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Reviews_Recipes" Association="Model.FK_Reviews_Recipes">
-            <End Role="Recipes" EntitySet="Recipes" />
-            <End Role="Reviews" EntitySet="Reviews" />
-          </AssociationSet>
-          <AssociationSet Name="FK_RecipeTags_TEgs" Association="Model.FK_RecipeTags_TEgs">
-            <End Role="TEgs" EntitySet="TEgs" />
-            <End Role="RecipeTags" EntitySet="RecipeTags" />
-          </AssociationSet>
-        </EntityContainer>
         <EntityType Name="Authors">
           <Key>
             <PropertyRef Name="AuthorID" />
           </Key>
           <Property Name="AuthorID" Type="Int32" Nullable="false" />
-          <Property Name="Authorname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Login" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Password" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Recipes" Relationship="Model.FK_Recipes_Authors" FromRole="Authors" ToRole="Recipes" />
+          <Property Name="Authorname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Login" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Recipes" Relationship="Self.FK_Recipes_Authors" FromRole="Authors" ToRole="Recipes" />
         </EntityType>
         <EntityType Name="Categories">
           <Key>
             <PropertyRef Name="CategoryID" />
           </Key>
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
-          <Property Name="CategoryName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Recipes" Relationship="Model.FK_Recipes_Categories" FromRole="Categories" ToRole="Recipes" />
+          <Property Name="CategoryName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Recipes" Relationship="Self.FK_Recipes_Categories" FromRole="Categories" ToRole="Recipes" />
         </EntityType>
         <EntityType Name="CokingSteps">
           <Key>
@@ -293,16 +261,16 @@
           <Property Name="StepID" Type="Int32" Nullable="false" />
           <Property Name="RecipeID" Type="Int32" Nullable="false" />
           <Property Name="StepNumber" Type="Int32" Nullable="false" />
-          <Property Name="StepDiscription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Recipes" Relationship="Model.FK_CokingSteps_Recipes" FromRole="CokingSteps" ToRole="Recipes" />
+          <Property Name="StepDiscription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Recipes" Relationship="Self.FK_CokingSteps_Recipes" FromRole="CokingSteps" ToRole="Recipes" />
         </EntityType>
         <EntityType Name="Ingredients">
           <Key>
             <PropertyRef Name="IngredientsID" />
           </Key>
           <Property Name="IngredientsID" Type="Int32" Nullable="false" />
-          <Property Name="IngredientName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="RecipeIngredients" Relationship="Model.FK_RecipeIngredients_Ingredients" FromRole="Ingredients" ToRole="RecipeIngredients" />
+          <Property Name="IngredientName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="RecipeIngredients" Relationship="Self.FK_RecipeIngredients_Ingredients" FromRole="Ingredients" ToRole="RecipeIngredients" />
         </EntityType>
         <EntityType Name="RecipeIngredients">
           <Key>
@@ -312,26 +280,26 @@
           <Property Name="RecipeID" Type="Int32" Nullable="false" />
           <Property Name="IngredientID" Type="Int32" Nullable="false" />
           <Property Name="Quantity" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Ingredients" Relationship="Model.FK_RecipeIngredients_Ingredients" FromRole="RecipeIngredients" ToRole="Ingredients" />
-          <NavigationProperty Name="Recipes" Relationship="Model.FK_RecipeIngredients_Recipes" FromRole="RecipeIngredients" ToRole="Recipes" />
+          <NavigationProperty Name="Ingredients" Relationship="Self.FK_RecipeIngredients_Ingredients" FromRole="RecipeIngredients" ToRole="Ingredients" />
+          <NavigationProperty Name="Recipes" Relationship="Self.FK_RecipeIngredients_Recipes" FromRole="RecipeIngredients" ToRole="Recipes" />
         </EntityType>
         <EntityType Name="Recipes">
           <Key>
             <PropertyRef Name="RecipeID" />
           </Key>
-          <Property Name="RecipeID" Type="Int32" Nullable="false" />
-          <Property Name="RecipeName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Discription" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="RecipeID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RecipeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Discription" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="CategoryID" Type="Int32" Nullable="false" />
           <Property Name="AuthorID" Type="Int32" Nullable="false" />
-          <Property Name="CookingTime" Type="Time" Nullable="false" Precision="7" />
+          <Property Name="CookingTime" Type="Int32" />
           <Property Name="image" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <NavigationProperty Name="Authors" Relationship="Model.FK_Recipes_Authors" FromRole="Recipes" ToRole="Authors" />
-          <NavigationProperty Name="Categories" Relationship="Model.FK_Recipes_Categories" FromRole="Recipes" ToRole="Categories" />
-          <NavigationProperty Name="CokingSteps" Relationship="Model.FK_CokingSteps_Recipes" FromRole="Recipes" ToRole="CokingSteps" />
-          <NavigationProperty Name="RecipeIngredients" Relationship="Model.FK_RecipeIngredients_Recipes" FromRole="Recipes" ToRole="RecipeIngredients" />
-          <NavigationProperty Name="RecipeTags" Relationship="Model.FK_RecipeTags_Recipes" FromRole="Recipes" ToRole="RecipeTags" />
-          <NavigationProperty Name="Reviews" Relationship="Model.FK_Reviews_Recipes" FromRole="Recipes" ToRole="Reviews" />
+          <NavigationProperty Name="Authors" Relationship="Self.FK_Recipes_Authors" FromRole="Recipes" ToRole="Authors" />
+          <NavigationProperty Name="Categories" Relationship="Self.FK_Recipes_Categories" FromRole="Recipes" ToRole="Categories" />
+          <NavigationProperty Name="CokingSteps" Relationship="Self.FK_CokingSteps_Recipes" FromRole="Recipes" ToRole="CokingSteps" />
+          <NavigationProperty Name="RecipeIngredients" Relationship="Self.FK_RecipeIngredients_Recipes" FromRole="Recipes" ToRole="RecipeIngredients" />
+          <NavigationProperty Name="RecipeTags" Relationship="Self.FK_RecipeTags_Recipes" FromRole="Recipes" ToRole="RecipeTags" />
+          <NavigationProperty Name="Reviews" Relationship="Self.FK_Reviews_Recipes" FromRole="Recipes" ToRole="Reviews" />
         </EntityType>
         <EntityType Name="RecipeTags">
           <Key>
@@ -340,8 +308,8 @@
           <Property Name="RecipeTagID" Type="Int32" Nullable="false" />
           <Property Name="PecipeID" Type="Int32" Nullable="false" />
           <Property Name="TagId" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Recipes" Relationship="Model.FK_RecipeTags_Recipes" FromRole="RecipeTags" ToRole="Recipes" />
-          <NavigationProperty Name="TEgs" Relationship="Model.FK_RecipeTags_TEgs" FromRole="RecipeTags" ToRole="TEgs" />
+          <NavigationProperty Name="Recipes" Relationship="Self.FK_RecipeTags_Recipes" FromRole="RecipeTags" ToRole="Recipes" />
+          <NavigationProperty Name="TEgs" Relationship="Self.FK_RecipeTags_TEgs" FromRole="RecipeTags" ToRole="TEgs" />
         </EntityType>
         <EntityType Name="Reviews">
           <Key>
@@ -349,9 +317,19 @@
           </Key>
           <Property Name="ReviewID" Type="Int32" Nullable="false" />
           <Property Name="RecipeID" Type="Int32" Nullable="false" />
-          <Property Name="ReviewText" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Rating" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="Recipes" Relationship="Model.FK_Reviews_Recipes" FromRole="Reviews" ToRole="Recipes" />
+          <Property Name="ReviewText" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rating" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Recipes" Relationship="Self.FK_Reviews_Recipes" FromRole="Reviews" ToRole="Recipes" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
         </EntityType>
         <EntityType Name="TEgs">
           <Key>
@@ -359,11 +337,11 @@
           </Key>
           <Property Name="TegId" Type="Int32" Nullable="false" />
           <Property Name="Tegname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <NavigationProperty Name="RecipeTags" Relationship="Model.FK_RecipeTags_TEgs" FromRole="TEgs" ToRole="RecipeTags" />
+          <NavigationProperty Name="RecipeTags" Relationship="Self.FK_RecipeTags_TEgs" FromRole="TEgs" ToRole="RecipeTags" />
         </EntityType>
         <Association Name="FK_Recipes_Authors">
-          <End Type="Model.Authors" Role="Authors" Multiplicity="1" />
-          <End Type="Model.Recipes" Role="Recipes" Multiplicity="*" />
+          <End Role="Authors" Type="Self.Authors" Multiplicity="1" />
+          <End Role="Recipes" Type="Self.Recipes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Authors">
               <PropertyRef Name="AuthorID" />
@@ -374,8 +352,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Recipes_Categories">
-          <End Type="Model.Categories" Role="Categories" Multiplicity="1" />
-          <End Type="Model.Recipes" Role="Recipes" Multiplicity="*" />
+          <End Role="Categories" Type="Self.Categories" Multiplicity="1" />
+          <End Role="Recipes" Type="Self.Recipes" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Categories">
               <PropertyRef Name="CategoryID" />
@@ -386,8 +364,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CokingSteps_Recipes">
-          <End Type="Model.Recipes" Role="Recipes" Multiplicity="1" />
-          <End Type="Model.CokingSteps" Role="CokingSteps" Multiplicity="*" />
+          <End Role="Recipes" Type="Self.Recipes" Multiplicity="1" />
+          <End Role="CokingSteps" Type="Self.CokingSteps" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Recipes">
               <PropertyRef Name="RecipeID" />
@@ -398,8 +376,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RecipeIngredients_Ingredients">
-          <End Type="Model.Ingredients" Role="Ingredients" Multiplicity="1" />
-          <End Type="Model.RecipeIngredients" Role="RecipeIngredients" Multiplicity="*" />
+          <End Role="Ingredients" Type="Self.Ingredients" Multiplicity="1" />
+          <End Role="RecipeIngredients" Type="Self.RecipeIngredients" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Ingredients">
               <PropertyRef Name="IngredientsID" />
@@ -410,8 +388,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RecipeIngredients_Recipes">
-          <End Type="Model.Recipes" Role="Recipes" Multiplicity="1" />
-          <End Type="Model.RecipeIngredients" Role="RecipeIngredients" Multiplicity="*" />
+          <End Role="Recipes" Type="Self.Recipes" Multiplicity="1" />
+          <End Role="RecipeIngredients" Type="Self.RecipeIngredients" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Recipes">
               <PropertyRef Name="RecipeID" />
@@ -422,8 +400,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RecipeTags_Recipes">
-          <End Type="Model.Recipes" Role="Recipes" Multiplicity="1" />
-          <End Type="Model.RecipeTags" Role="RecipeTags" Multiplicity="*" />
+          <End Role="Recipes" Type="Self.Recipes" Multiplicity="1" />
+          <End Role="RecipeTags" Type="Self.RecipeTags" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Recipes">
               <PropertyRef Name="RecipeID" />
@@ -434,8 +412,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_Reviews_Recipes">
-          <End Type="Model.Recipes" Role="Recipes" Multiplicity="1" />
-          <End Type="Model.Reviews" Role="Reviews" Multiplicity="*" />
+          <End Role="Recipes" Type="Self.Recipes" Multiplicity="1" />
+          <End Role="Reviews" Type="Self.Reviews" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Recipes">
               <PropertyRef Name="RecipeID" />
@@ -446,8 +424,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_RecipeTags_TEgs">
-          <End Type="Model.TEgs" Role="TEgs" Multiplicity="1" />
-          <End Type="Model.RecipeTags" Role="RecipeTags" Multiplicity="*" />
+          <End Role="TEgs" Type="Self.TEgs" Multiplicity="1" />
+          <End Role="RecipeTags" Type="Self.RecipeTags" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TEgs">
               <PropertyRef Name="TegId" />
@@ -457,99 +435,154 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityContainer Name="Entities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Authors" EntityType="Self.Authors" />
+          <EntitySet Name="Categories" EntityType="Self.Categories" />
+          <EntitySet Name="CokingSteps" EntityType="Self.CokingSteps" />
+          <EntitySet Name="Ingredients" EntityType="Self.Ingredients" />
+          <EntitySet Name="RecipeIngredients" EntityType="Self.RecipeIngredients" />
+          <EntitySet Name="Recipes" EntityType="Self.Recipes" />
+          <EntitySet Name="RecipeTags" EntityType="Self.RecipeTags" />
+          <EntitySet Name="Reviews" EntityType="Self.Reviews" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="TEgs" EntityType="Self.TEgs" />
+          <AssociationSet Name="FK_Recipes_Authors" Association="Self.FK_Recipes_Authors">
+            <End Role="Authors" EntitySet="Authors" />
+            <End Role="Recipes" EntitySet="Recipes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Recipes_Categories" Association="Self.FK_Recipes_Categories">
+            <End Role="Categories" EntitySet="Categories" />
+            <End Role="Recipes" EntitySet="Recipes" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CokingSteps_Recipes" Association="Self.FK_CokingSteps_Recipes">
+            <End Role="Recipes" EntitySet="Recipes" />
+            <End Role="CokingSteps" EntitySet="CokingSteps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeIngredients_Ingredients" Association="Self.FK_RecipeIngredients_Ingredients">
+            <End Role="Ingredients" EntitySet="Ingredients" />
+            <End Role="RecipeIngredients" EntitySet="RecipeIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeIngredients_Recipes" Association="Self.FK_RecipeIngredients_Recipes">
+            <End Role="Recipes" EntitySet="Recipes" />
+            <End Role="RecipeIngredients" EntitySet="RecipeIngredients" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeTags_Recipes" Association="Self.FK_RecipeTags_Recipes">
+            <End Role="Recipes" EntitySet="Recipes" />
+            <End Role="RecipeTags" EntitySet="RecipeTags" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Reviews_Recipes" Association="Self.FK_Reviews_Recipes">
+            <End Role="Recipes" EntitySet="Recipes" />
+            <End Role="Reviews" EntitySet="Reviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RecipeTags_TEgs" Association="Self.FK_RecipeTags_TEgs">
+            <End Role="TEgs" EntitySet="TEgs" />
+            <End Role="RecipeTags" EntitySet="RecipeTags" />
+          </AssociationSet>
+        </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище ModelContainer" CdmEntityContainer="Entities1">
           <EntitySetMapping Name="Authors">
             <EntityTypeMapping TypeName="Model.Authors">
               <MappingFragment StoreEntitySet="Authors">
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Login" ColumnName="Login" />
-                <ScalarProperty Name="Authorname" ColumnName="Authorname" />
                 <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+                <ScalarProperty Name="Authorname" ColumnName="Authorname" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Categories">
             <EntityTypeMapping TypeName="Model.Categories">
               <MappingFragment StoreEntitySet="Categories">
-                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
                 <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="CokingSteps">
             <EntityTypeMapping TypeName="Model.CokingSteps">
               <MappingFragment StoreEntitySet="CokingSteps">
-                <ScalarProperty Name="StepDiscription" ColumnName="StepDiscription" />
-                <ScalarProperty Name="StepNumber" ColumnName="StepNumber" />
-                <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
                 <ScalarProperty Name="StepID" ColumnName="StepID" />
+                <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
+                <ScalarProperty Name="StepNumber" ColumnName="StepNumber" />
+                <ScalarProperty Name="StepDiscription" ColumnName="StepDiscription" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Ingredients">
             <EntityTypeMapping TypeName="Model.Ingredients">
               <MappingFragment StoreEntitySet="Ingredients">
-                <ScalarProperty Name="IngredientName" ColumnName="IngredientName" />
                 <ScalarProperty Name="IngredientsID" ColumnName="IngredientsID" />
+                <ScalarProperty Name="IngredientName" ColumnName="IngredientName" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RecipeIngredients">
             <EntityTypeMapping TypeName="Model.RecipeIngredients">
               <MappingFragment StoreEntitySet="RecipeIngredients">
-                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
-                <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
-                <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
                 <ScalarProperty Name="RecipeingredientID" ColumnName="RecipeingredientID" />
+                <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
+                <ScalarProperty Name="IngredientID" ColumnName="IngredientID" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Recipes">
             <EntityTypeMapping TypeName="Model.Recipes">
               <MappingFragment StoreEntitySet="Recipes">
-                <ScalarProperty Name="image" ColumnName="image" />
-                <ScalarProperty Name="CookingTime" ColumnName="CookingTime" />
-                <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
-                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
-                <ScalarProperty Name="Discription" ColumnName="Discription" />
-                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
                 <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
+                <ScalarProperty Name="RecipeName" ColumnName="RecipeName" />
+                <ScalarProperty Name="Discription" ColumnName="Discription" />
+                <ScalarProperty Name="CategoryID" ColumnName="CategoryID" />
+                <ScalarProperty Name="AuthorID" ColumnName="AuthorID" />
+                <ScalarProperty Name="CookingTime" ColumnName="CookingTime" />
+                <ScalarProperty Name="image" ColumnName="image" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="RecipeTags">
             <EntityTypeMapping TypeName="Model.RecipeTags">
               <MappingFragment StoreEntitySet="RecipeTags">
-                <ScalarProperty Name="TagId" ColumnName="TagId" />
-                <ScalarProperty Name="PecipeID" ColumnName="PecipeID" />
                 <ScalarProperty Name="RecipeTagID" ColumnName="RecipeTagID" />
+                <ScalarProperty Name="PecipeID" ColumnName="PecipeID" />
+                <ScalarProperty Name="TagId" ColumnName="TagId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Reviews">
             <EntityTypeMapping TypeName="Model.Reviews">
               <MappingFragment StoreEntitySet="Reviews">
-                <ScalarProperty Name="Rating" ColumnName="Rating" />
-                <ScalarProperty Name="ReviewText" ColumnName="ReviewText" />
-                <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
                 <ScalarProperty Name="ReviewID" ColumnName="ReviewID" />
+                <ScalarProperty Name="RecipeID" ColumnName="RecipeID" />
+                <ScalarProperty Name="ReviewText" ColumnName="ReviewText" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="Model.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TEgs">
             <EntityTypeMapping TypeName="Model.TEgs">
               <MappingFragment StoreEntitySet="TEgs">
-                <ScalarProperty Name="Tegname" ColumnName="Tegname" />
                 <ScalarProperty Name="TegId" ColumnName="TegId" />
+                <ScalarProperty Name="Tegname" ColumnName="Tegname" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          </EntityContainerMapping>
+        </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

@@ -8,6 +8,6 @@ namespace WpfApp2.AppDate
 {
     internal class AppConnect
     {
-        public static Entities model1;
+        public static Entities1 model1;
     }
 }
