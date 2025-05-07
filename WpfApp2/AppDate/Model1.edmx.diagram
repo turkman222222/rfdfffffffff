@@ -23,6 +23,9 @@
         <AssociationConnector Association="Model.FK_RecipeTags_Recipes" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_Reviews_Recipes" ManuallyRouted="false" />
         <AssociationConnector Association="Model.FK_RecipeTags_TEgs" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="Model.LikeRecipes" Width="1.5" PointX="8.25" PointY="2.625" />
+        <AssociationConnector Association="Model.FK_LikeRecipes_Authors" />
+        <AssociationConnector Association="Model.FK_LikeRecipes_Recipes1" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

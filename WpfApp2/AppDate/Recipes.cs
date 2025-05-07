@@ -21,6 +21,7 @@ namespace WpfApp2.AppDate
             this.RecipeIngredients = new HashSet<RecipeIngredients>();
             this.RecipeTags = new HashSet<RecipeTags>();
             this.Reviews = new HashSet<Reviews>();
+            this.LikeRecipes = new HashSet<LikeRecipes>();
         }
     
         public int RecipeID { get; set; }
@@ -30,23 +31,7 @@ namespace WpfApp2.AppDate
         public int AuthorID { get; set; }
         public Nullable<int> CookingTime { get; set; }
         public string image { get; set; }
-
-        public string CurrentPhoto
-        {
-            get
-            {
-                if (String.IsNullOrEmpty(image) || String.IsNullOrWhiteSpace(image))
-                {
-                    return "/images/picture.png";
-
-                }
-                else
-                {
-                    return "/images/" + image;
-                }
-            }
-        }
-
+    
         public virtual Authors Authors { get; set; }
         public virtual Categories Categories { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -57,5 +42,7 @@ namespace WpfApp2.AppDate
         public virtual ICollection<RecipeTags> RecipeTags { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Reviews> Reviews { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<LikeRecipes> LikeRecipes { get; set; }
     }
 }

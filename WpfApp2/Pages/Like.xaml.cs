@@ -31,13 +31,17 @@ namespace WpfApp2.Pages
         {
             // Получение списка ID понравившихся рецептов текущего автора
             var likeRecipes = AppConnect.model1.LikeRecipes.Where(x =>
-    x.authorID == AppConnect.AuthorID).Select(x => x.idRecipes).ToList();
+    x.authorID == AppConnect.AuthorID).Select(x => x.RecipeID).ToList();
             // Получение списка рецептов по найденным ID
-            recept = AppConnect.model1.Recipes.Where(x =>
+            var recept = AppConnect.model1.Recipes.Where(x =>
     likeRecipes.Contains(x.RecipeID)).ToList();
             // Установка источника данных для списка продуктов
-            listProducts.ItemsSource = recept;
+            Listprod.ItemsSource = recept;
         }
 
+        private void Listprod_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfApp2.AppDate;
 
 namespace WpfApp2.Pages
 {
@@ -41,6 +42,7 @@ namespace WpfApp2.Pages
             else
             {
                 MessageBox.Show("Привет" + user_object.Authorname + "!", "Уведомление", MessageBoxButton.OK, MessageBoxImage.Information);
+                AppConnect.AuthorID = user_object.AuthorID;
                 recept regg = new recept();
                 NavigationService.Navigate(regg);
             }

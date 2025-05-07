@@ -35,5 +35,6 @@ namespace WpfApp2.AppDate
         public virtual DbSet<Reviews> Reviews { get; set; }
         public virtual DbSet<sysdiagrams> sysdiagrams { get; set; }
         public virtual DbSet<TEgs> TEgs { get; set; }
+        public virtual DbSet<LikeRecipes> LikeRecipes { get; set; }
     }
 }

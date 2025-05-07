@@ -31,7 +31,7 @@ namespace WpfApp2.Pages
             Prod.ItemsSource = AppDate.AppConnect.model1.Recipes.ToList();
         }
 
-        }
+        
 
         private void ComboFilter_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -44,6 +44,11 @@ namespace WpfApp2.Pages
         }
 
         private void Prod_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
         {
 
         }

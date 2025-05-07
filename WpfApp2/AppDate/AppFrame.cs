@@ -10,5 +10,6 @@ namespace WpfApp2.AppDate
     internal class AppFrame
     {
         public static Frame frmMane2;
+        
     }
 }
