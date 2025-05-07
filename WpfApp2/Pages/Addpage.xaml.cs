@@ -103,10 +103,5 @@ namespace WpfApp2.Pages
             }
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            recept addpagerep = new recept();
-            AppFrame.frmMane2.Navigate(addpagerep);
-        }
     }
 }

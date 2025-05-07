@@ -9,13 +9,22 @@
       Title="autoriz">
 
     <Grid>
-        <TextBox x:Name="txtLogin" HorizontalAlignment="Center" Margin="0,104,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="120" TextChanged="txtLogin_TextChanged"/>
-        <TextBlock x:Name="txtLogins" HorizontalAlignment="Left" Margin="340,83,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top"/>
-        <PasswordBox x:Name="passBoxpassword" HorizontalAlignment="Center" Margin="0,148,0,0" VerticalAlignment="Top" Width="120"/>
-        <TextBlock x:Name="txtPassword" HorizontalAlignment="Left" Margin="340,127,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" RenderTransformOrigin="-0.297,0.114"/>
-        <Button x:Name="btnAutoriz" Content="Авторизироваться" HorizontalAlignment="Center" Margin="0,178,0,0" VerticalAlignment="Top" Width="132" Click="btnAutoriz_Click"/>
-        <Button x:Name="btnReg" Content="Зарегестрироваться" HorizontalAlignment="Center" Margin="0,210,0,0" VerticalAlignment="Top" Width="132" Click="btnReg_Click"/>
-        <TextBlock x:Name="txtAutoriz226" HorizontalAlignment="Left" Margin="357,34,0,0" TextWrapping="Wrap" Text="Авторизуйтесь" VerticalAlignment="Top"/>
+        <TextBox x:Name="txtLogin" HorizontalAlignment="Center" Margin="0,104,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="178" TextChanged="txtLogin_TextChanged"/>
+        <TextBlock x:Name="txtLogins" HorizontalAlignment="Left" Margin="311,88,0,0" TextWrapping="Wrap" Text="Логин" VerticalAlignment="Top" Width="50" Foreground="White"/>
+        <PasswordBox x:Name="passBoxpassword" HorizontalAlignment="Center" Margin="0,138,0,0" VerticalAlignment="Top" Width="178"/>
+        <TextBlock x:Name="txtPassword" HorizontalAlignment="Left" Margin="312,122,0,0" TextWrapping="Wrap" Text="Пароль" VerticalAlignment="Top" RenderTransformOrigin="-0.297,0.114" Width="61" Foreground="White">
+            <TextBlock.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform AngleX="-4.75"/>
+                    <RotateTransform/>
+                    <TranslateTransform X="-0.151"/>
+                </TransformGroup>
+            </TextBlock.RenderTransform>
+        </TextBlock>
+        <Button x:Name="btnAutoriz" Content="Авторизироваться" HorizontalAlignment="Center" Margin="0,173,0,0" VerticalAlignment="Top" Width="178" Click="btnAutoriz_Click" Cursor="No"/>
+        <Button x:Name="btnReg" Content="Зарегестрироваться" HorizontalAlignment="Center" Margin="0,205,0,0" VerticalAlignment="Top" Width="178" Click="btnReg_Click"/>
+        <TextBlock x:Name="txtAutoriz226" HorizontalAlignment="Center" Margin="0,35,0,0" TextWrapping="Wrap" Text="Авторизуйтесь" VerticalAlignment="Top" Width="140" FontSize="18" Foreground="White"/>
 
     </Grid>
 </Page>
