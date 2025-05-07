@@ -74,7 +74,8 @@
             <Button Content="добавить" Height="28" Width="128" Click="Button_Click_1"/>
             <Button Content="Удалить" Margin="15,15,15,15" Height="28" Width="128" Click="Button_Click_2"/>
         <Button Content="Редактировать" Click="Button_Click" Height="28" Width="128"/>
-            <Button Content="Избранное" Margin="15,15,15,15" Width="128" Height="28" Click="Button_Click_3"/>
+            <Button Content="В избранное" Margin="15,15,15,15" Width="128" Height="28" Click="Button_Click_3"/>
+            <Button Content="Избранные" Margin="15,15,15,15" Width="128" Height="28" Click="Button_Click_4"/>
         </StackPanel>
 
 
