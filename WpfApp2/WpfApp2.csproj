@@ -131,6 +131,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\Like.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\recept.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -146,6 +150,9 @@
     </Compile>
     <Compile Include="Pages\autoriz.xaml.cs">
       <DependentUpon>autoriz.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Like.xaml.cs">
+      <DependentUpon>Like.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\recept.xaml.cs">
       <DependentUpon>recept.xaml</DependentUpon>

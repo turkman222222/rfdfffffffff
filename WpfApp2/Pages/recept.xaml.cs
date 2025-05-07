@@ -137,6 +137,17 @@ namespace WpfApp2.Pages
                 }
             }
         }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            Like reggg = new Like();
+            NavigationService.Navigate(reggg);
+        }
+
+        private void Prod_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 
 }
